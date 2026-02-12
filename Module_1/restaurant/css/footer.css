@@ -1,0 +1,52 @@
+.main-footer {
+    width: 100%;
+    background-color: rgba(27, 38, 33, 0.95);
+    padding: 40px 0;
+    margin-top: 50px;
+    border-top: 1px solid rgba(226, 187, 58, 0.3);
+    text-align: center;
+}
+
+.social-links {
+    display: flex; /* using flexbox to center the social media links and create equal spacing between them */
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 25px;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-family: "Playfair Display", serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.4s ease;
+    position: relative; /* relative positioning allows us to position the after pseudo-element (underline) relative to the link text */
+}
+
+.social-links a::after {
+    /* after pseudo-element to create an underline effect on hover */
+    content: "";
+    position: absolute; /* absolute positioning allows us to position the underline relative to the link text */
+    width: 0;
+    height: 1px;
+    bottom: -7px;
+    left: 0;
+    background-color: #e2bb3a;
+    transition: width 0.3s ease; /* width transition creates a sliding underline effect when hovering over the social media links */
+}
+
+.social-links a:hover {
+    color: #e2bb3a;
+}
+
+.social-links a:hover::after {
+    width: 100%;
+}
+
+.copyright {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}

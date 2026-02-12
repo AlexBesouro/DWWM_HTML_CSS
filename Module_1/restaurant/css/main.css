@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box; /* using border-box makes it easier to manage padding and borders without affecting the overall width and height of elements */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Lato", sans-serif;
+    background:
+        linear-gradient(rgba(90, 47, 10, 0.55), rgba(90, 47, 10, 0.55)), url("../images/background.jpg"); /* using a linear gradient with a semi-transparent color on top of the background image to create a dark overlay effect, enhancing text readability */
+    background-repeat: no-repeat; /* ensuring the background image doesn't repeat */
+    background-position: center center; /* centering the background image */
+    background-attachment: fixed; /* making the background image fixed so it doesn't scroll with the content, creating a parallax effect */
+    background-size: cover; /* making the background image cover the entire viewport, ensuring it scales properly on different screen sizes */
+    background-position: center;
+}
+
+section {
+    /* adding padding and a semi-transparent background to sections to improve readability against the background image */
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
+    border-radius: 20px;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-family: "Playfair Display", serif;
+    color: rgb(241, 227, 142);
+    text-align: center;
+    margin-bottom: 30px;
+}
+h3 {
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    color: #e2bb3a;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.description-text {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #ffffff;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dish-item {
+    background: rgba(
+        0,
+        0,
+        0,
+        0.1
+    ); /* adding a semi-transparent background to dish items to improve readability and create a card-like effect */
+    padding: 20px;
+    border: 1px solid rgb(139, 109, 32);
+    border-radius: 25px;
+    margin: 25px 15px 15px 15px;
+    display: flex; /* using flexbox to align the image and description */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.dish-item img {
+    width: 50%; /* setting a fixed width for the dish images to maintain consistency and balance with the description text */
+    aspect-ratio: 1 / 1; /* like this the image will always be a square, maintaining a consistent shape for all dish images */
+    object-fit: cover; /* using object-fit: cover ensures that the image fills the entire area of the container while maintaining its aspect ratio, cropping if necessary to avoid distortion */
+    object-position: center;
+    border-radius: 20px;
+    opacity: 0.85; /* adding a slight transparency to the images to blend better with the background and create a more cohesive look */
+    transition: opacity 0.3s ease;
+}
+.dish-item img:hover {
+    opacity: 1;
+}
+
+.dish-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgb(241, 227, 142);
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.info-section {
+    display: grid; /* using grid layout for the three info blocks */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start; /* start means all blocks will align to the top */
+}
+
+.info-section h3 {
+    margin-top: 0;
+    border-bottom: 1px solid rgba(226, 187, 58, 0.3);
+    padding-bottom: 10px;
+}
+
+.hours-list {
+    list-style: none;
+    padding: 0;
+}
+
+.hours-list li {
+    display: flex; /*using flexbox to align day and hours on the same line */
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+.hours-list .day {
+    color: rgb(241, 227, 142);
+}
+
+.address p,
+.contact p {
+    font-size: 1rem;
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+.address {
+    text-align: center;
+}
+
+.map-link,
+.contact a {
+    color: #e2bb3a;
+    text-decoration: none;
+    border: 1px solid #e2bb3a;
+    padding: 8px 15px;
+    border-radius: 20px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.map-link:hover,
+.contact a:hover {
+    background-color: #e2bb3a;
+    color: #000;
+}

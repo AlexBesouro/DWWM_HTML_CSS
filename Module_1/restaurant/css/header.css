@@ -1,0 +1,68 @@
+.main-header {
+    position: relative; /* its relative to the parent container which is the main container of the page */
+    padding: 60px 20px; /* with padding the title and slogan are properly spaced from the edges */
+}
+
+.main-header::before {
+    /* this is a pseudo element that creates an overlay effect on the header */
+    content: ""; /*this is necessary to create the pseudo element, it doesn't display any content but allows us to style it */
+    position: absolute; /* its absolute positioned to relative to the .main-header container */
+    top: 0; /* this works like a anchor point to position the overlay at the top of the header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* this adds a semi-transparent black overlay to enhance text visibility */
+    z-index: 1; /* this ensures the overlay is behind the header content */
+}
+
+.header-content {
+    display: flex; /* this makes the header content a flex container, allowing for easy alignment and spacing of the title, slogan, and navigation menu */
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative; /* relative postitioning allows the header content to be positioned above the overlay */
+    z-index: 2; /* z-index doesnt work without position property, this ensures the header content is above the overlay */
+}
+
+.restaurant-name {
+    text-align: center;
+}
+
+.restaurant-name h1 {
+    color: #d4af37;
+    font-size: 48px;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slogan {
+    color: #d4af37;
+    font-size: 20px;
+    font-weight: 300;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border: 2px solid white;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.nav-menu li a:hover {
+    background-color: white;
+    color: #333;
+}
