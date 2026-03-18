@@ -1,0 +1,354 @@
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #e67e22;
+    --bg-color: #f4f7f6;
+    --text-color: #333;
+    --white: #ffffff;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+/* ------------------------------------------HEADER------------------------------------------ */
+header {
+    width: 100%;
+    height: 125px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+picture {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgb(255, 255, 255);
+}
+picture img {
+    width: 100%;
+    height: 100%;
+}
+
+nav ul {
+    font-size: clamp(1.4rem, 1.7rem, 2rem);
+    font-weight: 600;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.home,
+.registration {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--accent-color);
+}
+
+nav ul li a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+/* ------------------------------------------MAIN------------------------------------------ */
+main {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 0 20px;
+    background: var(--white);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.55);
+    border-radius: 15px;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    width: 90%;
+    height: 200px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    background: linear-gradient(135deg, #4b6a8a 0%, #34495e 100%);
+    border-radius: 50px;
+    border: 1px solid rgb(0, 0, 0);
+}
+.title h1,
+.title h2 {
+    margin: 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--accent-color);
+    letter-spacing: 2px;
+}
+.title h1 {
+    font-size: 1.4rem;
+}
+.title h2 {
+    font-size: 1.2rem;
+
+    text-align: center;
+}
+.hr-section {
+    height: 2px;
+    width: 100%;
+}
+
+section {
+    margin: 10px 0;
+}
+.main-section {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.main-section h2 {
+    max-width: 400px;
+    margin: 5px auto 20px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    border-left: 5px solid var(--accent-color);
+    padding-left: 5px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.main-section p {
+    font-size: 1.2rem;
+    text-align: center;
+    max-width: 600px;
+}
+
+.inscription-btn {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.btn-main {
+    max-width: 450px;
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 35px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-main:hover {
+    background-color: #d35400;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+}
+
+.btn-main:active {
+    transform: translateY(-1px);
+}
+
+.table-container {
+    overflow-x: auto;
+    width: 100%;
+}
+table {
+    font-family: inherit;
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+
+caption {
+    font-weight: bold;
+    padding: 10px;
+    background: #eee;
+    color: var(--primary-color);
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+thead {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+tbody tr:nth-child(even) {
+    background-color: #ebebeb;
+}
+article h3 {
+    margin: 10px;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    text-decoration-color: var(--accent-color);
+    letter-spacing: 1px;
+}
+.main-section article p {
+    text-align: left;
+    padding-left: 10px;
+}
+.instructors {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.instructors p {
+    padding-bottom: 20px;
+}
+
+.information {
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+.information h2 {
+    margin-bottom: 25px;
+}
+.information ul {
+    padding-left: 20px;
+}
+/* ------------------------------------------MAIN------------------------------------------ */
+footer {
+    width: 100%;
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #222;
+}
+hr {
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, transparent, var(--accent-color), transparent);
+
+    margin: 20px 0;
+}
+
+/* ------------------------------------------INSCRIPTION------------------------------------------ */
+
+.inscription-main h2 {
+    text-align: center;
+    margin: 15px;
+    border-bottom: 1px solid var(--accent-color);
+}
+.inscription-main p {
+    margin-bottom: 20px;
+}
+
+fieldset {
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+}
+
+legend {
+    text-align: center;
+    font-weight: bold;
+    color: var(--accent-color);
+    padding: 0 10px;
+}
+
+label {
+    font-weight: 600;
+}
+
+input,
+select,
+textarea,
+button {
+    font: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+    border-color: var(--accent-color);
+}
+
+input:valid,
+select:valid,
+textarea:valid {
+    border-left: 3px solid #27ae60;
+}
+
+input:invalid,
+select:invalid,
+textarea:invalid {
+    border-left: 3px solid #e74c3c;
+}
+
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+}
+button[type="submit"] {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+    max-width: 300px;
+}
+
+button[type="submit"]:hover {
+    background-color: #d35400;
+}

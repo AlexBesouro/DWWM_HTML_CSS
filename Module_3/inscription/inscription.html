@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registration — Vertical Peak 2026</title>
+        
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body class="inscription-body">
+        <header>
+            <picture class="logo">
+                <img src="./images/277666740_454717909697276_3991420498237609357_n.jpg" alt="Logo Climb Up" />
+            </picture>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="registration">Registration</li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="inscription-main">
+            <h2>Participant Registration</h2>
+            <p>Please complete the form below. Required fields are marked with an asterisk (*).</p>
+
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Athlete Profile</legend>
+
+                    <p>
+                        <label for="fname">First Name *:</label><br />
+                        <input type="text" id="fname" name="fname" required aria-required="true" minlength="2" />
+                    </p>
+
+                    <p>
+                        <label for="lname">Last Name *:</label><br />
+                        <input type="text" id="lname" name="lname" required aria-required="true" />
+                    </p>
+
+                    <p>
+                        <label for="email">Email *:</label><br />
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required
+                            aria-required="true"
+                            aria-describedby="email-desc"
+                        />
+                        <br /><small id="email-desc"
+                            >We will send your registration confirmation and QR code here.</small
+                        >
+                    </p>
+
+                    <p>
+                        <label for="phone">Emergency Contact Phone:</label><br />
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" aria-describedby="phone-hint" />
+                        <br /><small id="phone-hint">Format: 10 digits (e.g., 0102030405).</small>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Participation Level</legend>
+
+                    <p>
+                        <label for="pass">Ticket Type *:</label><br />
+                        <select id="pass" name="pass" required aria-required="true">
+                            <option value="">-- Select your pass --</option>
+                            <option value="visitor">Spectator (15$)</option>
+                            <option value="amateur">Amateur Competitor (50$)</option>
+                            <option value="pro">Pro-Athlete Pass (120$)</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <strong>Interested Disciplines * (Select at least 1):</strong><br />
+                        <input type="checkbox" id="d1" name="discipline" value="bouldering" />
+                        <label for="d1">Bouldering</label><br />
+
+                        <input type="checkbox" id="d2" name="discipline" value="lead" />
+                        <label for="d2">Lead Climbing</label><br />
+
+                        <input type="checkbox" id="d3" name="discipline" value="speed" />
+                        <label for="d3">Speed Climbing</label><br />
+
+                        <input type="checkbox" id="d4" name="discipline" value="training" />
+                        <label for="d4">Training Masterclass</label>
+                    </p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Catering</legend>
+
+                    <p>
+                        <strong>Meal Plan for the 3 days:</strong><br />
+                        <input type="radio" id="none" name="meal" value="none" checked />
+                        <label for="none">I'll bring my own food</label><br />
+
+                        <input type="radio" id="standard" name="meal" value="standard" />
+                        <label for="standard">Standard Athlete Menu (10$)</label><br />
+
+                        <input type="radio" id="vegan" name="meal" value="vegan" />
+                        <label for="vegan">High-Protein Vegan Menu (10$)</label>
+                    </p>
+
+                    <p>
+                        <label for="medical">Relevant Medical History or Allergies:</label><br />
+                        <textarea
+                            id="medical"
+                            name="medical"
+                            rows="4"
+                            cols="40"
+                            maxlength="300"
+                            placeholder="Please list any injuries or allergies..."
+                        ></textarea>
+                    </p>
+                </fieldset>
+
+                <p>
+                    <input type="checkbox" id="waiver" name="waiver" required aria-required="true" />
+                    <label for="waiver">I agree to the liability waiver and safety rules *</label>
+                </p>
+
+                <div class="submit-btn">
+                    <button type="submit">Submit Registration</button>
+                </div>
+            </form>
+        </main>
+
+        <footer>
+            <hr />
+            <p>&copy; 2026 Vertical Climb. Climbing Event.</p>
+        </footer>
+    </body>
+    </body>
+</html>
