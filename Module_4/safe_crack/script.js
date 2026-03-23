@@ -30,9 +30,9 @@ function startSafeCrack() {
         history.push(guess);
 
         if (guess < secret) {
-            console.log(`Your gues of ${guess} is too low. Increase value."`);
+            console.log(`Your guess of ${guess} is too low. Increase value."`);
         } else if (guess > secret) {
-            console.log(`Your gues of ${guess} is too high. Decrease value.`);
+            console.log(`Your guess of ${guess} is too high. Decrease value.`);
         } else {
             console.log(`ACCESS GRANTED. Vault opened in ${attempts} attempts.`);
         }
@@ -45,6 +45,36 @@ function startSafeCrack() {
     };
 
     console.table(summary); // To draw a table instead of simple log
+    let playAgain = prompt("Do you want to play one more time? (yes/no)");
+    if (playAgain && (playAgain.toLowerCase() === "yes" || playAgain.toLowerCase() === "y")) {
+        startSafeCrack();
+    } else {
+        console.log("Goodbye then!");
+    }
 }
 
-startSafeCrack();
+function startGameQuestion() {
+    let answer = prompt("Do you want to play the Safe Crack game? (yes/no)");
+
+    while (true) {
+        if (answer === null) {
+            console.log("Maybe next time. Goodbye!");
+            break;
+        }
+
+        let formattedAnswer = answer.toLowerCase().trim();
+
+        if (formattedAnswer === "no" || formattedAnswer === "n") {
+            console.log("Maybe next time. Goodbye!");
+            break;
+        }
+
+        if (formattedAnswer === "yes" || formattedAnswer === "y") {
+            startSafeCrack();
+            break;
+        }
+
+        answer = prompt("Sorry, the answer should be yes or no. Do you want to play?");
+    }
+}
+startGameQuestion();
