@@ -30,12 +30,9 @@ function aide() {
 function calculerMoyenne() {
     const input = prompt("Saisissez les notes séparées par des espaces:");
     const notes = input.split(" ").map(Number);
-    const x = notes.length;
     let somme = 0;
-    for (let i = 0; i < x; i++) {
-        somme += notes[i];
-    }
-    const result = Number(somme / x).toFixed(2);
+    notes.forEach((note) => (somme += note));
+    const result = Number(somme / notes.length).toFixed(2);
     return result;
 }
 
@@ -43,9 +40,9 @@ function trouverMaximum() {
     const input = prompt("Saisissez les nombres séparés par des espaces:");
     const nombres = input.split(" ").map(Number);
     let max = nombres[0];
-    for (let i = 0; i < nombres.length; i++) {
-        if (nombres[i] > max) {
-            max = nombres[i];
+    for (let nombre of nombres) {
+        if (nombre > max) {
+            max = nombre;
         }
     }
     return max;
@@ -55,9 +52,9 @@ function trouverMinimum() {
     const input = prompt("Saisissez les nombres séparés par des espaces:");
     const nombres = input.split(" ").map(Number);
     let min = nombres[0];
-    for (let i = 0; i < nombres.length; i++) {
-        if (nombres[i] < min) {
-            min = nombres[i];
+    for (let nombre of nombres) {
+        if (nombre < min) {
+            max = nombre;
         }
     }
     return min;
@@ -126,7 +123,6 @@ function menu() {
         }
 
         response = prompt("Voulez-vous procéder à une autre opération? (oui/no): ");
-
         if (response) {
             response = response.toLowerCase().trim();
         }
@@ -135,3 +131,83 @@ function menu() {
     console.log("C'est tout alors ! Au revoir");
     return result;
 }
+
+function compterOccurrences(tableau, valeur) {
+    let compteur = 0;
+    tableau.forEach((element) => {
+        if (element === valeur) {
+            compteur++;
+        }
+    });
+    return compteur;
+}
+
+//-------------------------------------ARROW FUNC---------------------------------------------------------------------
+// const estPair = n => n % 2 === 0;
+// const valeurAbsolue = n => n < 0 ? -n : n;
+// const celsiusEnFahrenheit = c => c * 9/5 + 32;
+// const fahrenheitEnCelsius = f => (f - 32) * 5/9;
+// const estNegatif = (n) => 0 > n;
+// const carre = (n) => n ** 2;
+// const cube = (n) => n ** 3;
+// const pourcentage = (partie, total) => (partie * 100) / total;
+// const initialiser = (prenom) => prenom[0].toUpperCase();
+
+//-------------------------------------TABLEAU---------------------------------------------------------------------
+afficherTableauFormate(["HTML", "CSS", "JavaScript"], "Mes competences");
+
+function afficherTableauFormate(tableau, titre) {
+    const largeur = 22;
+    const bordureH = "─".repeat(largeur);
+
+    // Centrer le titre
+    const espaces = largeur - titre.length;
+    const gauche = Math.floor(espaces / 2);
+    const titreCentre = `${" ".repeat(gauche)}${titre}${" ".repeat(largeur - gauche - titre.length)}`;
+
+    console.log(`┌${bordureH}┐`);
+    console.log(`│${titreCentre}│`);
+    console.log(`├${bordureH}┤`);
+
+    // Afficher chaque element avec son numero
+    tableau.forEach((element, index) => {
+        const ligne = `${index + 1}. ${element}`;
+        console.log(`│ ${ligne.padEnd(largeur - 1)}│`);
+    });
+
+    console.log(`└${bordureH}┘`);
+    console.log(`(${tableau.length} elements)`);
+}
+
+//-------------------------------------MAP/FILTER---------------------------------------------------------------------
+const nombres = [5, -3, 8, -1, 12, 0, -7, 3];
+
+const personnes = [
+    { nom: "Dupont", prenom: "Clara", age: 25 },
+    { nom: "Martin", prenom: "Lucas", age: 17 },
+    { nom: "Durand", prenom: "Emma", age: 30 },
+    { nom: "Petit", prenom: "Leo", age: 15 },
+    { nom: "Robert", prenom: "Julie", age: 22 },
+];
+
+const prixBruts = [9.999, 45.5, 120, 3.1, 79.995];
+
+function doublerValeurs() {
+    const input = prompt("Saisissez les nombres séparés par des espaces:");
+    const double = input.map((element) => element * 2);
+    return double;
+}
+
+const extraireNoms = (tableau) => tableau.map((personne) => `${personne.prenom} ${personne.nom}`);
+
+const formaterSansArrondir = (tableau) =>
+    tableau.map((prix) => {
+        const coupe = Math.trunc(prix * 100) / 100;
+        return `${coupe.toFixed(2)} EUR`;
+    });
+
+const garderPositifs = (tableau) => tableau.filter((nombre) => nombre > 0);
+
+const filtrerParCritere = (tableau, ageMinimum) => tableau.filter((personne) => personne.age > ageMinimum);
+
+const nomsDesMajeurs = (tableau) => tableau.filter((personne) => personne.age > 18).map((personne) => personne.prenom);
