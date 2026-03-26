@@ -211,3 +211,190 @@ const garderPositifs = (tableau) => tableau.filter((nombre) => nombre > 0);
 const filtrerParCritere = (tableau, ageMinimum) => tableau.filter((personne) => personne.age > ageMinimum);
 
 const nomsDesMajeurs = (tableau) => tableau.filter((personne) => personne.age > 18).map((personne) => personne.prenom);
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+const trouverParNom = (tableau, nom) => tableau.find((obj) => obj.nom === nom);
+const trouverIndex = (tableau, valeur) => tableau.find((obj) => obj === valeur);
+const contientNegatif = (tableau) => tableau.some((element) => element < 0);
+const tousPositifs = (tableau) => tableau.every((element) => element > 0);
+const tousComplets = (tableau) => tableau.every((contact) => contact.nom && contact.email && contact.telephone);
+function trierNombres(tableau, ordre) {
+    if (ordre === "croissant") {
+        tableau.sort((a, b) => a - b);
+    } else if (ordre === "decroissant") {
+        tableau.sort((a, b) => b - a);
+    } else {
+        return "Ordre est non défini";
+    }
+    return tableau;
+}
+// ----------------------------------------------------------------------------------------------------------------------------
+const compterMots = (text) => text.trim().split(" ").length;
+function capitaliserMots(text) {
+    let result = text.trim().split(" ");
+    result = result.map((mot) => mot[0].toUpperCase() + mot.slice(1).toLowerCase()).join(" ");
+    return result;
+}
+const inverserChaine = (texte) => texte.split("").reverse().join("");
+const nettoyerTexte = (texte) =>
+    texte
+        .toLowerCase()
+        .trim()
+        .split(" ")
+        .filter((str) => str != "")
+        .join(" ");
+// ----------------------------------------------------------------------------------------------------------------------------
+
+// const contacts = [
+//     {
+//         prenom: "Thomas",
+//         nom: "Dubois",
+//         telephone: "+33 6 12 34 56 78",
+//         email: "thomas.dubois@exemple.com",
+//         ville: "Paris",
+//     },
+//     {
+//         prenom: "Léa",
+//         nom: "Moreau",
+//         telephone: "+33 6 98 76 54 32",
+//         email: "lea.moreau@exemple.com",
+//         ville: "Lyon",
+//     },
+//     {
+//         prenom: "Lucas",
+//         nom: "Bernard",
+//         telephone: "+33 7 11 22 33 44",
+//         email: "lucas.bernard@exemple.com",
+//         ville: "Marseille",
+//     },
+// ];
+
+const ajouterContact = (prenom, nom, telephone, email, ville) =>
+    contacts.push({ prenom: prenom, nom: nom, telephone: telephone, email: email, ville: ville });
+
+// ajouterContact("Hugo", "Martin", "06 55 44 33 22", "hugo@email.com", "Bordeaux");
+const afficherContacts = () => {
+    console.log("=== CARNET DE CONTACTS (4 contacts) ===");
+    contacts.forEach((contact, index) =>
+        console.log(`${index + 1}. ${contact.prenom} ${contact.nom} - ${contact.ville} - ${contact.telephone}`),
+    );
+};
+
+const afficherDetailsContact = (index) => console.log(contacts[index]);
+
+function compterContactsParVille(ville) {
+    let cnt = 0;
+    for (contact of contacts) {
+        if (contact.ville === ville) {
+            cnt += 1;
+        }
+    }
+    return `${cnt} cotact(s) a ${ville}`;
+}
+// ----------------------------------------------------------------------------------------------------------------------------
+const contactList = [
+    { nom: "Dupont", prenom: "Clara", ville: "Paris", age: 28, email: "clara.dupont@mail.fr" },
+    { nom: "Martin", prenom: "Lucas", ville: "Lyon", age: 35, email: "lucas.martin@mail.fr" },
+    { nom: "Bernard", prenom: "Emma", ville: "Paris", age: 22, email: "emma.bernard@mail.fr" },
+    { nom: "Petit", prenom: "Hugo", ville: "Marseille", age: 41, email: "hugo.petit@mail.fr" },
+    { nom: "Durand", prenom: "Lea", ville: "Lyon", age: 29, email: "lea.durand@mail.fr" },
+    { nom: "Leroy", prenom: "Tom", ville: "Paris", age: 19, email: "tom.leroy@mail.fr" },
+    { nom: "Moreau", prenom: "Julie", ville: "Lyon", age: 33, email: "julie.moreau@mail.fr" },
+    { nom: "Roux", prenom: "Nathan", ville: "Marseille", age: 26, email: "nathan.roux@mail.fr" },
+];
+const rechercherContact = (contacts, nom) => {
+    const contactRecherche = contacts.find((contact) => contact.nom.toLowerCase() === nom.toLowerCase());
+    if (contactRecherche === undefined) {
+        return "Contact non trouve";
+    }
+    return contactRecherche;
+};
+
+const filtrerParVille = (contacts, ville) => {
+    const villeRecherche = contacts.filter((contact) => contact.ville.toLowerCase() === ville.toLowerCase());
+    return villeRecherche;
+};
+
+const trierParAge = (contacts, ordre) => {
+    if (ordre === "croissant") {
+        contacts.sort((a, b) => a.age - b.age);
+    } else if (ordre === "decroissant") {
+        contacts.sort((a, b) => b.age - a.age);
+    }
+    console.log("Ordre est mal defini");
+};
+
+const afficherAnnuaire = (contacts) => {
+    contacts.sort((a, b) => a.nom.localeCompare(b.nom, "fr"));
+    contacts.forEach((contact) =>
+        console.log(`${contact.nom} ${contact.prenom} - ${contact.ville} (${contact.age} ans)`),
+    );
+};
+
+const statistiquesContacts = (contacts) => {
+    let somme = 0;
+    for (const contact of contacts) {
+        somme += contact.age;
+    }
+    let ageMoyen = somme / contacts.length;
+    const villes = contacts.map((contact) => contact.ville);
+    const uniqueVilles = [...new Set(villes)].join(", ");
+    console.log(`Total contacts: ${contacts.length}, Age moyen : ${ageMoyen.toFixed(1)} ans, Villes: ${uniqueVilles}`);
+};
+//------------------------------------------------------------------------------------------------------------------------------
+
+function triBullesSimplifie(arrayNumero) {
+    if (!arrayNumero) {
+        return "Votre tableau n'est pas valide";
+    } else if (arrayNumero.length === 1) {
+        return arrayNumero;
+    }
+    for (let tourExt = 0; tourExt < arrayNumero.length - 1; tourExt++) {
+        for (let tourInt = 0; tourInt < arrayNumero.length - 1 - tourExt; tourInt++) {
+            if (arrayNumero[tourInt] > arrayNumero[tourInt + 1]) {
+                const temp = arrayNumero[tourInt];
+                arrayNumero[tourInt] = arrayNumero[tourInt + 1];
+                arrayNumero[tourInt + 1] = temp;
+            }
+        }
+    }
+    return arrayNumero;
+}
+
+const motLePlusLong = (stringMots) => {
+    if (!stringMots && !stringMots.trim()) {
+        return "Votre phrase n'est pas valide";
+    }
+    const arrayMots = stringMots.split(" ");
+    let plusLong = arrayMots[0];
+    for (const mot of arrayMots) {
+        if (mot.length > plusLong.length) {
+            plusLong = mot;
+        }
+    }
+    return plusLong;
+};
+
+function statistiquesCollection(collection, propriete) {
+    const notes = collection.map((element) => element[propriete]);
+    console.log(notes);
+    let somme = 0;
+    for (const element of notes) {
+        somme += element;
+    }
+    const moyen = (somme / notes.length).toFixed(2);
+    let max = notes[0];
+    let min = notes[0];
+    for (const element of notes) {
+        if (element > max) {
+            max = element;
+        } else if (element < min) {
+            min = element;
+        }
+    }
+    return { min: min, max: max, moyenne: moyen };
+}
+
+const supprimerDoublons = (arrayNumero) =>
+    arrayNumero.filter((element, index) => arrayNumero.indexOf(element) === index);
