@@ -95,6 +95,10 @@ h3 {
     gap: 30px;
     align-items: start; /* start means all blocks will align to the top */
 }
+.info-section h2 {
+    grid-column: 1 / -1; /* making the section title span across all three columns */
+    margin-bottom: 20px;
+}
 
 .info-section h3 {
     margin-top: 0;
