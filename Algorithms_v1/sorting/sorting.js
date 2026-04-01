@@ -1,3 +1,6 @@
+
+//========================================TO SORTED==================================================
+
 // const ages = [25, 8, 42, 15, 3, 67, 31];
 // const prenoms = ["Lucas", "emma", "Clara", "hugo", "Alice"];
 // const temperatures = [-5, 12, 0, 38, -15, 22, 8];
@@ -12,7 +15,6 @@
 // const sortedTemperatures = temperatures.toSorted((a,b) => b - a).slice(0,3)
 // console.log(sortedTemperatures)
 
-// // ----------------------------------------------------------------------------------------------------------------------------
 
 // const produits = [
 //     { nom: "Clavier mecanique", prix: 89.99, categorie: "informatique", stock: 15 },
@@ -42,36 +44,104 @@
 // console.table(sortedProduitsCategorie)
 
 
-// ----------------------------------------------------------------------------------------------------------------------------
-const prenoms = ["Emma", "Lucas", "Clara", "Hugo", "Lea", "Adam", "Nina", "Paul", "Jade", "Tom"];
-function chercherPrenom(tableau, prenom){
-    let etapes = 0;
-    for (let i = 0; i < tableau.length; i++){
-        etapes ++
-        if (tableau[i] === prenom){
-            return `Trouve: true, index: ${i}, etapes: ${etapes}`;
+// ============================================== LINEAR SEARCH / BINARY SEARCH ================================================
+// const prenoms = ["Emma", "Lucas", "Clara", "Hugo", "Lea", "Adam", "Nina", "Paul", "Jade", "Tom"];
+// function chercherPrenom(tableau, prenom){
+//     let etapes = 0;
+//     for (let i = 0; i < tableau.length; i++){
+//         etapes ++
+//         if (tableau[i] === prenom){
+//             return `Trouve: true, index: ${i}, etapes: ${etapes}`;
+//         }
+//     } 
+//     return `Trouve: false, index: -1, etapes: ${etapes}`;
+// }
+// console.log(chercherPrenom(prenoms, "ClaSra"))
+
+// const nombres = [3, 7, 11, 15, 18, 22, 26, 30, 35, 40, 44, 49, 53, 58, 62, 67, 71, 78, 84, 91];
+
+// function rechercheDicho(tableau, valeur){
+//     let debut = 0;
+//     let fin = tableau.length - 1
+//     etapes = 0
+//     while (debut <= fin){
+//         etapes ++
+//         const center = Math.floor((debut + fin) / 2)
+//         if (tableau[center] === valeur){
+//             return `Trouve: true, index: ${center}, etapes: ${etapes}`
+//         } else if (tableau[center] < valeur){
+//             debut = center + 1
+//         }else {fin = center - 1}
+//     }
+//     return `Trouve: false, index: -1, etapes: ${etapes}`
+// }
+
+// console.log(rechercheDicho(nombres, 31))
+
+
+// ====================================== BUBLE SORT =========================================================
+
+function bubleSort(table){
+    const tab = [...table]
+    const n = table.length
+    let changes = 0
+    for (let i = 0; i < n - 1; i++){
+        console.log(`\n=== Passage ${i + 1} ===`)
+        for(let j = 0; j < n - 1 - i; j++){
+            if (tab[j + 1] < tab[j]){
+                changes++
+                const temp = tab[j];
+                tab[j] = tab[j+1];
+                tab[j + 1] = temp;
+            }
         }
-    } 
-    return `Trouve: false, index: -1, etapes: ${etapes}`;
-}
-console.log(chercherPrenom(prenoms, "ClaSra"))
-
-const nombres = [3, 7, 11, 15, 18, 22, 26, 30, 35, 40, 44, 49, 53, 58, 62, 67, 71, 78, 84, 91];
-
-function rechercheDicho(tableau, valeur){
-    let debut = 0;
-    let fin = tableau.length - 1
-    etapes = 0
-    while (debut <= fin){
-        etapes ++
-        const center = Math.floor((debut + fin) / 2)
-        if (tableau[center] === valeur){
-            return `Trouve: true, index: ${center}, etapes: ${etapes}`
-        } else if (tableau[center] < valeur){
-            debut = center + 1
-        }else {fin = center - 1}
     }
-    return `Trouve: false, index: -1, etapes: ${etapes}`
+    console.log(`Total number of changes : ${changes}`);
+    return tab
 }
+console.log(bubleSort([13, 7, 11, 152, 18, 22, 2, 30, 35, 10, 44, 49, 513, 58, 2, 6, 71, 78, 84, 91]))
 
-console.log(rechercheDicho(nombres, 31))
+function selectionSort(table){
+    const tab = [...table];
+    const n = table.length;
+    let changes = 0
+    for (let i = 0; i < n - 1; i++){
+        console.log(`\n=== Passage ${i + 1} ===`)
+        let minAtIndex = i
+        for (let j = i + 1; j < n; j++){
+            if (tab[j] < tab[minAtIndex]){
+                minAtIndex = j
+            }
+        }
+        if (minAtIndex !== i){
+            changes++
+            const temp = tab[i]
+            tab[i] = tab[minAtIndex]
+            tab[minAtIndex] = temp
+        }
+    }
+    console.log(`Total number of changes : ${changes}`);
+    return tab
+}
+console.log(selectionSort([13, 7, 11, 152, 18, 22, 2, 30, 35, 10, 44, 49, 513, 58, 2, 6, 71, 78, 84, 91]))
+
+
+function insertionSort(table){
+    const tab = [...table];
+    const n = table.length;
+    let changes = 0;
+    for (let i = 1; i < n; i++){
+        console.log(`\n=== Passage ${i + 1} ===`)
+        const elementToInsert = tab[i];
+        let j = i - 1;
+        while (j >= 0 && tab[j] > elementToInsert){
+            changes++
+            tab[j + 1] = tab[j]
+            j--;
+        }
+        tab[j + 1] = elementToInsert
+    }
+    console.log(`Total number of changes : ${changes}`);
+    return tab
+}
+console.log(insertionSort([13, 7, 11, 152, 18, 22, 2, 30, 35, 10, 44, 49, 513, 58, 2, 6, 71, 78, 84, 91]))
