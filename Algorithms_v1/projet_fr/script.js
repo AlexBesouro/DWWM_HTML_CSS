@@ -197,3 +197,81 @@ function comparerPerformance(limit){
     return `Resultats: recherche linear - ${linear}, recherche binary - ${binary}`
 }
 console.log(comparerPerformance(10000))
+
+
+// ============================== Compteur de frequence de mots  ==================================
+
+function frequencyWords(text){
+    if (text === "") return {};
+    const counter = {}
+    const trimmedText = text.toLowerCase().trim()
+    const isPunctuation = /\p{P}/u;
+    for (const word of trimmedText){
+        if (word === " " || isPunctuation.test(word)) continue;
+        counter[word] = (counter[word] || 0) + 1
+    }
+    return counter
+}
+console.log(frequencyWords("Le chat mange le poisson. Le chat dort."));
+
+// ============================== Detection d’anagrammes  ==================================
+
+function verifyAnagramme(word1, word2){
+    if (word1.length !== word2.length) return false;
+    const counter = {};
+    
+    for (const letter of word1){
+        counter[letter] = (counter[letter] || 0) + 1
+    }
+    for (const letter of word1){
+        counter[letter] = (counter[letter] || 0) - 1
+        if (counter[letter] < 0) return false;
+    }
+    return true
+}
+
+console.log(verifyAnagramme("chien", "niche"));  
+console.log(verifyAnagramme("chat", "tache"));    
+
+// ============================== Sliding window  ==================================
+
+function findSubTable(table, n){
+    if (table < n) return null;
+    let currentSum = 0
+    let subTable = []
+    for (let i = 0; i < n; i++){
+        currentSum += table[i];
+    }
+    let maxSum = currentSum
+    subTable = table.slice(0,n)
+    for (let i = n; i < table.length ; i++){
+        currentSum = currentSum + table[i] - table[i - n];
+        if (currentSum > maxSum){
+            maxSum = currentSum
+            subTable = table.slice((i - n + 1), (i + 1))
+        }
+    }
+    return {"sum": maxSum, "subTable": subTable}
+}
+console.log(findSubTable([2, 1, 5, 1, 3, 8], 3));
+
+
+// ============================== Two Pointer  ==================================
+
+function findPairs(table, value){
+    let left = 0;
+    let right = table.length - 1;
+    const pairs = []
+
+    while (left < right){
+        if (table[left] + table[right] === value){
+            pairs.push([table[left], table[right]]);
+            left += 1;
+            right -= 1;
+        }else if (table[left] + table[right] < value){
+            left += 1
+        }else {right -= 1}
+    }
+    return pairs
+}
+console.log(findPairs([1, 2, 3, 4, 5, 6, 7, 8, 9], 10));
