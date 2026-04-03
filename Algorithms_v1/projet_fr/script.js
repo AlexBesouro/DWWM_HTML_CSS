@@ -275,3 +275,64 @@ function findPairs(table, value){
     return pairs
 }
 console.log(findPairs([1, 2, 3, 4, 5, 6, 7, 8, 9], 10));
+
+// ============================== FACTORIELLE ==================================
+function factorielle(n){
+    if (n < 0) return null;
+    if (n <= 1) return 1;
+
+    return n * factorielle(n-1);
+}
+console.log(factorielle(5))
+
+// ============================== FIBONACCI ==================================
+
+function fibonacci(n){
+    if (n < 0) return null;
+    if (n === 0){
+        return 0;
+    }else if (n === 1){
+        return 1
+    }else return (fibonacci(n - 1) + fibonacci(n - 2))
+    
+}
+console.log(fibonacci(20))
+
+// ============================== FLATTEN TABLE ==================================
+
+function flatter(table){
+    if (table.length === 0){
+        return []
+    }
+    const result = []
+    for (const i of table){
+        if (!Array.isArray(i)){
+            result.push(i)
+        }else {
+            const subResult = flatter(i);
+            result = result.concat(subResult)
+        }
+    }   
+    return result
+}
+
+// ============================== SEARCH IN OBJECT ==================================
+
+function searchInObject(object, keyToFind){
+    //Base case
+    for (const key in object){
+        if (key === keyToFind){
+            return object[key]
+        }
+        // RECURSION 
+        // Similar to array recurison we should check if object[key] is also an object
+        else if(typeof object[key] === "object" && object[key] !== null && !Array.isArray(object[key])){
+            // we call function searchInObject on inside object
+            const result = searchInObject(object[key], keyToFind);
+            if (result !== undefined){
+                return result
+            }
+        }
+    }
+    return undefined // If there is no key with this name
+}
