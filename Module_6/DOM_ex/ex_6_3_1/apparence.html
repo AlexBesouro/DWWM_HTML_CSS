@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Apparence et attributs</title>
+    <script src="apparence.js" defer></script>
+    <style>
+        .surligne {
+            background-color: yellow;
+            padding: 2px 5px;
+        }
+
+        .barre {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .important {
+            border-left: 3px solid red;
+            padding-left: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titre">Ma liste</h1>
+    <ul>
+        <li class="item" data-status="active" data-category="cours">Apprendre le DOM</li>
+        <li class="item" data-status="active" data-category="pratique">Pratiquer classList</li>
+        <li class="item" data-status="done" data-category="pratique">Utiliser les data-attributes</li>
+    </ul>
+</body>
+
+</html>

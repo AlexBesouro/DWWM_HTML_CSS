@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liste dynamique</title>
+    <script src="dynamique.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .contact {
+            padding: 10px;
+            margin: 5px 0;
+            background: #e8f4fd;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact .nom {
+            font-weight: bold;
+        }
+
+        .contact .email {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .btn-supprimer {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Mes contacts</h1>
+    <div id="liste-contacts"></div>
+</body>
+
+</html>
