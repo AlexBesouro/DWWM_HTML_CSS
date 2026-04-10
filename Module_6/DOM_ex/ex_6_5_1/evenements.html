@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Les evenements JavaScript</title>
+    <script src="evenements.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        #compteur {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+
+        .actif {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section-1">
+        <h1>Decouverte des evenements</h1>
+        <button id="btn-clic">Clique-moi !</button>
+        <p id="compteur">Clics : 0</p>
+        <button id="btn-style">Change mon style</button>
+    </section>
+    <section>
+        <h2>Champ de saisie</h2>
+        <input type="text" id="saisie" placeholder="Tapez quelque chose...">
+        <p id="miroir">Vous tapez : </p>
+        
+        <h2>Lien intercepte</h2>
+        <a href="https://www.google.com" id="lien-bloque">Cliquez ce lien (il ne naviguera pas)</a>
+        <p id="message-lien"></p>
+    </section>
+</body>
+
+</html>

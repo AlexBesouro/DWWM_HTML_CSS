@@ -13,13 +13,32 @@
 
     <main class="container">
         <h1>Ma Liste de Tâches</h1>
-        <p class="counter">3 tâches en cours</p>
+        <p class="counter"></p>
 
         <ul class="task-list">
-            <!-- <li class="tache" data-status="active">Faire les courses</li>
-            <li class="tache" data-status="active">Reviser JavaScript</li>
-            <li class="tache" data-status="active">Ranger le bureau</li> -->
+            <li class="task" data-status="active">
+                <span class="task-text">Faire les courses</span>
+                <button class="delete-btn">X</button>
+            </li>
+            <li class="task done" data-status="done">
+                <span class="task-text">Reviser JavaScript</span>
+                <button class="delete-btn">X</button>
+            </li>
+            <li class="task" data-status="active">
+                <span class="task-text">Ranger le bureau</span>
+                <button class="delete-btn">X</button>
+            </li>
         </ul>
+        <div class="add-field">
+            <button id="btn-new-task">New Task</button>
+            <form id="add-form" class="add-form">
+                <div class="input-field">
+                    <input type="text" id="new-task-field" name="task" placeholder="Ajouter une tache...">
+                    <span class="message-error" id="error-task"></span>
+                </div>
+                <button type="submit" class="add-btn">Ajouter</button>
+            </form>
+        </div>
     </main>
 
 </body>

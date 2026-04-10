@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <script defer src="inscription.js"></script>
+    <style>
+        /* Votre CSS */
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        input {
+            padding: 8px;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            display: block;
+            margin: 5px 0 5px 0;
+        }
+
+        .invalide {
+            border-color: #e74c3c;
+            background-color: #ffeaea;
+        }
+
+        .valide {
+            border-color: #2ecc71;
+            background-color: #eafff0;
+        }
+
+        .erreur {
+            color: #e74c3c;
+            font-size: 0.85em;
+            display: block;
+            margin-bottom: 15px;
+            min-height: 1em;
+        }
+
+        .succes {
+            color: #2ecc71;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Créer un compte</h2>
+
+    <form id="formInscription">
+        <label for="pseudo">Pseudo (min. 3 caractères) :</label>
+        <input type="text" id="pseudo" placeholder="Votre pseudo">
+        <span id="erreurPseudo" class="erreur"></span>
+
+        <label for="age">Âge (entre 16 et 120) :</label>
+        <input type="number" id="age" placeholder="Votre âge">
+        <span id="erreurAge" class="erreur"></span>
+
+        <button type="submit">S'inscrire</button>
+        <p id="messageGlobal"></p>
+    </form>
+
+</body>
+
+</html>

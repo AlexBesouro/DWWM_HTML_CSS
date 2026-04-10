@@ -58,3 +58,56 @@ h1 {
     color: #999;
     opacity: 0.6;
 }
+.add-field{
+    margin: 20px 0;
+}
+
+#btn-new-task {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#btn-new-task:hover {
+    background-color: #45a049;
+}
+
+#add-form {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+#new-task-field {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+    font-size: 14px;
+}
+
+#add-btn {
+    padding: 8px 16px;
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#new-task-field.invalide {
+    border-color: #e74c3c;
+    background-color: #ffeaea;
+}
+
+.message-error {
+    color: #e74c3c;
+    font-size: 0.8em;
+    display: block;
+    margin-top: 2px;
+    min-height: 1.2em;
+}

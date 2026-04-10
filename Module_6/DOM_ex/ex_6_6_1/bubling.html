@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="bubling.js"></script>
+</head>
+<body>
+    <div id="grand-parent" style="padding: 20px; background: #ddd;">
+        DIV (grand-parent)
+        <ul id="parent" style="padding: 20px; background: #bbb;">
+            UL (parent)
+            <li class="enfant" style="padding: 10px; background: #999;">LI 1 (enfant)</li>
+            <li class="enfant" style="padding: 10px; background: #999;">LI 2 (enfant)</li>
+            <li class="enfant" style="padding: 10px; background: #999;">LI 3 (enfant)</li>
+        </ul>
+    </div>
+    <div>
+        <input type="text" id="champ-couleur" placeholder="Entrez une couleur">
+        <button id="btn-ajouter">Ajouter</button>
+        
+        <ul id="liste-couleurs">
+            <li>Rouge <button class="btn-supprimer">X</button></li>
+            <li>Bleu <button class="btn-supprimer">X</button></li>
+            <li>Vert <button class="btn-supprimer">X</button></li>
+        </ul>
+    </div>
+</body>
+</html>
