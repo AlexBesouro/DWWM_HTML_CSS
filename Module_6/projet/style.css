@@ -1,113 +1,180 @@
-/* Общие настройки для чистого вида */
+/* Общие настройки */
+:root {
+    --primary: #4a90e2;
+    --success: #2ecc71;
+    --danger: #e74c3c;
+    --bg: #f4f7f6;
+    --text: #333;
+    --white: #ffffff;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #ffffff;
+    background-color: var(--bg);
+    color: var(--text);
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 40px 20px;
     margin: 0;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #1e1e1e;
+    background: var(--white);
+    width: 100%;
+    max-width: 500px;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    width: 550px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
 
 h1 {
-    color: #42f5e3;
-    margin-bottom: 0.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
 }
 
-.counter {
-    color: #FF5733;
-    font-weight: bold;
+/* Счетчик и статы */
+.counter,
+#stats {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
     margin-bottom: 1.5rem;
 }
 
+/* Список задач */
 .task-list {
-    width: 75%;
     list-style: none;
     padding: 0;
+    margin-bottom: 2rem;
 }
 
-.task-list li {
-    background-color: #2a2a2a;
-    margin: 10px 0;
-    padding: 12px;
-    border-radius: 6px;
-    border-left: 4px solid #31910c;
-    transition: transform 0.2s;
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.3s ease;
 }
 
-.task-list li:hover {
-    transform: scale(1.03);
+.task:last-child {
+    border-bottom: none;
 }
 
-.done {
+.task-text {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.task.done .task-text {
     text-decoration: line-through;
-    color: #999;
-    opacity: 0.6;
+    color: #888;
 }
-.add-field{
-    margin: 20px 0;
+
+/* Кнопки удаления */
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #ccc;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.delete-btn:hover {
+    color: var(--danger);
+}
+
+/* Форма добавления */
+.add-field {
+    margin-bottom: 2rem;
 }
 
 #btn-new-task {
-    padding: 8px 16px;
-    background-color: #4CAF50;
+    width: 100%;
+    padding: 10px;
+    background: var(--primary);
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 10px;
 }
 
-#btn-new-task:hover {
-    background-color: #45a049;
+.add-form {
+    display: none;
+    /* Скрыта по умолчанию, JS переключит на block */
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px dashed #ddd;
 }
 
-#add-form {
-    margin-top: 10px;
-    display: flex;
-    gap: 10px;
-}
-
-#new-task-field {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
-    font-size: 14px;
-}
-
-#add-btn {
-    padding: 8px 16px;
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-#new-task-field.invalide {
-    border-color: #e74c3c;
-    background-color: #ffeaea;
+.input-field input,
+#recherche {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 .message-error {
-    color: #e74c3c;
-    font-size: 0.8em;
+    color: var(--danger);
+    font-size: 0.8rem;
     display: block;
-    margin-top: 2px;
-    min-height: 1.2em;
+    margin-bottom: 10px;
+}
+
+.invalide {
+    border-color: var(--danger) !important;
+}
+
+/* Фильтры и Сортировка */
+.filtres,
+.tri {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.btn-filtre,
+.tri button {
+    flex: 1;
+    padding: 8px 5px;
+    background: #eee;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.btn-filtre.actif {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-filtre:hover,
+.tri button:hover {
+    background: #ddd;
+}
+
+#recherche {
+    border-color: var(--primary);
+    background-color: #f0f7ff;
+}
+
+/* Адаптивность */
+@media (max-width: 400px) {
+    .filtres {
+        flex-direction: column;
+    }
 }

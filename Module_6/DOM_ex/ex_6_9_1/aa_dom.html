@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Filtre de Pays</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; padding-top: 50px; }
+.container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 300px; }
+input { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; margin-bottom: 20px; }
+ul { list-style: none; padding: 0; }
+li { padding: 8px 12px; border-bottom: 1px solid #eee; transition: background 0.2s; }
+li:hover { background-color: #f9f9f9; }
+li:last-child { border-bottom: none; }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Chercher un pays</h1>
+        <input type="text" id="search-bar" placeholder="Tapez un pays...">
+        <ul id="country-list">
+        </ul>
+    </div>
+
+    <script src="aa_dom.js"></script>
+</body>
+
+</html>
