@@ -1,17 +1,20 @@
-/* Общие настройки */
+/* Переменные для легкой настройки */
 :root {
-    --primary: #4a90e2;
-    --success: #2ecc71;
-    --danger: #e74c3c;
-    --bg: #f4f7f6;
-    --text: #333;
-    --white: #ffffff;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --border: #e2e8f0;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     background-color: var(--bg);
-    color: var(--text);
+    color: var(--text-main);
     display: flex;
     justify-content: center;
     padding: 40px 20px;
@@ -19,162 +22,190 @@ body {
 }
 
 .container {
-    background: var(--white);
+    background: var(--card);
     width: 100%;
-    max-width: 500px;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    max-width: 480px;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
     text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--primary);
+    margin-bottom: 8px;
+    letter-spacing: -0.025em;
 }
 
-/* Счетчик и статы */
-.counter,
-#stats {
+.counter {
     text-align: center;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    margin-bottom: 24px;
 }
 
 /* Список задач */
 .task-list {
     list-style: none;
     padding: 0;
-    margin-bottom: 2rem;
+    margin: 0 0 24px 0;
 }
 
 .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 12px 16px;
     background: #fff;
-    padding: 12px 15px;
-    border-bottom: 1px solid #eee;
-    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: transform 0.1s;
 }
 
-.task:last-child {
-    border-bottom: none;
+.task:hover {
+    border-color: var(--primary);
 }
 
-.task-text {
-    cursor: pointer;
-    flex-grow: 1;
+.task.done {
+    background: #f1f5f9;
+    opacity: 0.7;
 }
 
 .task.done .task-text {
     text-decoration: line-through;
-    color: #888;
+    color: var(--text-muted);
 }
 
-/* Кнопки удаления */
-.delete-btn {
-    background: transparent;
-    border: none;
-    color: #ccc;
-    font-weight: bold;
+.task-text {
+    flex-grow: 1;
     cursor: pointer;
-    padding: 5px 10px;
-    transition: color 0.2s;
+}
+
+.delete-btn {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
 }
 
 .delete-btn:hover {
-    color: var(--danger);
+    background: var(--danger);
+    color: white;
 }
 
-/* Форма добавления */
+/* Секция добавления */
 .add-field {
-    margin-bottom: 2rem;
+    margin-bottom: 24px;
 }
 
 #btn-new-task {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background: var(--primary);
     color: white;
     border: none;
-    border-radius: 6px;
-    cursor: pointer;
+    border-radius: 8px;
     font-weight: 600;
-    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#btn-new-task:hover {
+    background: var(--primary-hover);
 }
 
 .add-form {
+    margin-top: 12px;
+    padding: 16px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+}
+.hidden {
     display: none;
-    /* Скрыта по умолчанию, JS переключит на block */
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px dashed #ddd;
 }
 
 .input-field input,
-#recherche {
+#searching {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    font-size: 1rem;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 8px;
+    outline: none;
+}
+
+.input-field input:focus,
+#searching:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
 }
 
 .message-error {
     color: var(--danger);
-    font-size: 0.8rem;
+    font-size: 12px;
     display: block;
-    margin-bottom: 10px;
-}
-
-.invalide {
-    border-color: var(--danger) !important;
+    margin-bottom: 8px;
 }
 
 /* Фильтры и Сортировка */
-.filtres,
-.tri {
+.filters,
+.sort {
     display: flex;
     gap: 8px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-.btn-filtre,
-.tri button {
+.btn-filter,
+.sort button {
     flex: 1;
-    padding: 8px 5px;
-    background: #eee;
-    border: none;
-    border-radius: 4px;
+    padding: 8px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 13px;
+    font-weight: 500;
     transition: all 0.2s;
 }
 
-.btn-filtre.actif {
+.btn-filter:hover,
+.sort button:hover {
+    background: #f1f5f9;
+}
+
+.btn-filter.actif {
     background: var(--primary);
     color: white;
-}
-
-.btn-filtre:hover,
-.tri button:hover {
-    background: #ddd;
-}
-
-#recherche {
     border-color: var(--primary);
-    background-color: #f0f7ff;
 }
 
-/* Адаптивность */
-@media (max-width: 400px) {
-    .filtres {
-        flex-direction: column;
-    }
+
+#searching {
+    margin-top: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 10px center;
+    background-size: 18px;
+    padding-left: 36px;
+    width: 89%;
+}
+
+#stats {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--text-muted);
 }

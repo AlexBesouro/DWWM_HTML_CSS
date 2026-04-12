@@ -12,42 +12,29 @@
 <body>
 
     <main class="container">
-        <h1>Ma Liste de Tâches</h1>
+        <h1>My TODO list</h1>
         <p class="counter"></p>
 
         <ul class="task-list">
-            <li class="task" data-status="active">
-                <span class="task-text">Faire les courses</span>
-                <button class="delete-btn">X</button>
-            </li>
-            <li class="task done" data-status="done">
-                <span class="task-text">Reviser JavaScript</span>
-                <button class="delete-btn">X</button>
-            </li>
-            <li class="task" data-status="active">
-                <span class="task-text">Ranger le bureau</span>
-                <button class="delete-btn">X</button>
-            </li>
         </ul>
         <div class="add-field">
             <button id="btn-new-task">New Task</button>
             <form id="add-form" class="add-form">
                 <div class="input-field">
-                    <input type="text" id="new-task-field" name="task" placeholder="Ajouter une tache...">
+                    <input type="text" id="new-task-field" name="task" placeholder="Add new task...">
                     <span class="message-error" id="error-task"></span>
                 </div>
-                <button type="submit" class="add-btn">Ajouter</button>
+                <button type="submit" class="add-btn">Add new task</button>
             </form>
         </div>
-        <div class="filtres">
-            <button class="btn-filtre actif" data-filtre="toutes">Toutes</button>
-            <button class="btn-filtre" data-filtre="actives">Actives</button>
-            <button class="btn-filtre" data-filtre="terminees">Terminees</button>
+        <div class="filters">
+            <button class="btn-filter actif" data-filter="all">All</button>
+            <button class="btn-filter" data-filter="active">Active</button>
+            <button class="btn-filter" data-filter="done">Done</button>
         </div>
-        <input type="text" id="recherche" placeholder="Rechercher une tache...">
-        <div class="tri">
-            <button id="tri-nom">Trier par nom</button>
-            <button id="tri-date">Trier par date</button>
+        <input type="text" id="searching" placeholder="Find a task...">
+        <div class="sort">
+            <button id="sort-name">Sort by name</button>
         </div>
         <div id="stats"></div>
     </main>
