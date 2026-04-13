@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    
+</head>
+<body>
+    <div class="gallery-app">
+        <header class="gallery-header">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search by title or author">
+                <button type="button" class="search-button">Search</button>
+            </div>
+    
+            <nav class="filters">
+                <label for="category-filter" class="filter-label">Category</label>
+                <select id="category-filter" class="category-select">
+                    <option value="all">All</option>
+                    <option value="nature">Nature</option>
+                    <option value="ville">City</option>
+                    <option value="portrait">Portrait</option>
+                    <option value="architecture">Architecture</option>
+                </select>
+            </nav>
+    
+            <div class="sorting-controls">
+                <label for="sort-select" class="sort-label">Sort by</label>
+                <select id="sort-select" class="sort-select">
+                    <option value="title">Title (A-Z)</option>
+                    <option value="date">Date (Newest first)</option>
+                    <option value="author">Author (A-Z)</option>
+                </select>
+            </div>
+    
+            <div class="gallery-stats">
+                <span class="photo-count"></span>
+            </div>
+        </header>
+    
+        <main class="gallery-grid"></main>
+
+        <section class="modal" aria-hidden="true">
+            <div class="modal-overlay"></div>
+            <div class="modal-content">
+                <button type="button" class="modal-close">Close</button>
+                <div class="modal-body">
+                    <img src="" alt="" class="modal-img">
+                    <div class="modal-details">
+                        <h2 class="modal-title"></h2>
+                        <p class="modal-description"></p>
+                        <span class="modal-author"></span>
+                        <span class="modal-date"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
