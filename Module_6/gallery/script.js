@@ -1,3 +1,5 @@
+// === STEP 1 ===
+// Data source and favorites storage
 const galleryItems = [
     {
         title: "Autumn Reflections",
@@ -97,20 +99,30 @@ const galleryItems = [
     }
 ];
 
-const storedLocallyPhotos = localStorage.getItem("my_photos_gallery");
-const defaultPhotos = storedLocallyPhotos ? JSON.parse(storedLocallyPhotos) : galleryItems;
-
 const FAVORITES_KEY = "gallery_favorites";
-const favoriteUrls = new Set(JSON.parse(localStorage.getItem(FAVORITES_KEY)) || []);
+const favoriteUrls = new Set(loadFavorites());
 
+// Load the list of favorite photo URLs from localStorage.
+// If nothing is stored yet, return an empty array.
+function loadFavorites() {
+    const stored = localStorage.getItem(FAVORITES_KEY);
+    return stored ? JSON.parse(stored) : [];
+}
+
+// Save the current favorites set to localStorage.
+// We convert the Set to an array because localStorage stores strings only.
 function saveFavorites() {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify([...favoriteUrls]));
 }
 
+// Check whether the given photo is currently marked as a favorite.
 function isFavorite(photo) {
     return favoriteUrls.has(photo.url);
 }
 
+// Toggle favorite status for one photo.
+// If the photo is already a favorite, remove it; otherwise add it.
+// Then persist the changes and update the visible gallery.
 function toggleFavorite(photo) {
     if (isFavorite(photo)) {
         favoriteUrls.delete(photo.url);
@@ -121,13 +133,13 @@ function toggleFavorite(photo) {
     renderGallery(getFilteredGalleryItems());
 }
 
-// === STEP 1 ===
-function getGalleryItems() {
-    return defaultPhotos;
-}
-
+let currentCategory = "all";
+let currentSearchTerm = "";
+let currentSort = "title";
 
 // === STEP 2 ===
+// Build a DOM card element for one photo object.
+// This includes the image, favorite button, and text info.
 function createPhotoCard(photo) {
     const card = document.createElement("article");
     card.className = "photo-card";
@@ -144,19 +156,19 @@ function createPhotoCard(photo) {
     favoriteButton.className = "favorite-btn";
     favoriteButton.type = "button";
     favoriteButton.textContent = isFavorite(photo) ? "♥" : "♡";
+    favoriteButton.setAttribute("aria-label", isFavorite(photo) ? "Remove favorite" : "Add favorite");
+
     if (isFavorite(photo)) {
         favoriteButton.classList.add("favorite-active");
     }
-    favoriteButton.setAttribute("aria-label", isFavorite(photo) ? "Remove favorite" : "Add favorite");
 
-    photoWrapper.append(image, favoriteButton);
-
-    card.addEventListener("click", () => openModal(photo));
+    // Clicking the favorite button should not open the modal.
     favoriteButton.addEventListener("click", (event) => {
         event.stopPropagation();
-        favoriteButton.classList.toggle("favorite-active");
         toggleFavorite(photo);
     });
+
+    photoWrapper.append(image, favoriteButton);
 
     const photoInfo = document.createElement("div");
     photoInfo.className = "photo-info";
@@ -165,25 +177,28 @@ function createPhotoCard(photo) {
     title.className = "photo-title";
     title.textContent = photo.title;
 
+    const description = document.createElement("p");
+    description.className = "photo-description";
+    description.textContent = photo.description;
+
     const author = document.createElement("p");
     author.className = "photo-author";
-    author.textContent = photo.author;
+    author.textContent = `Author: ${photo.author}`;
 
     const date = document.createElement("span");
     date.className = "photo-date";
-    date.textContent = photo.date;
+    date.textContent = `Date: ${photo.date}`;
 
-    photoInfo.append(title, author, date);
+    photoInfo.append(title, description, author, date);
     card.append(photoWrapper, photoInfo);
 
+    card.addEventListener("click", () => openModal(photo));
     return card;
 }
 
-let currentCategory = "all";
-let currentSearchTerm = "";
-let currentSort = "title";
-
 // === STEP 3 ===
+// Return only photos that match the selected category.
+// If "all" is selected, no filtering is applied.
 function filterGalleryByCategory(items, category) {
     if (!category || category === "all") {
         return items;
@@ -193,6 +208,8 @@ function filterGalleryByCategory(items, category) {
 }
 
 // === STEP 4 ===
+// Return only photos whose title or author contains the search term.
+// Search is case-insensitive and works in real time.
 function filterGalleryBySearch(items, searchTerm) {
     if (!searchTerm) {
         return items;
@@ -207,13 +224,8 @@ function filterGalleryBySearch(items, searchTerm) {
 }
 
 // === STEP 5 ===
-function getFilteredGalleryItems() {
-    const fromCategory = filterGalleryByCategory(getGalleryItems(), currentCategory);
-    const fromSearch = filterGalleryBySearch(fromCategory, currentSearchTerm);
-    return sortGalleryItems(fromSearch, currentSort);
-}
-
-// === STEP 9 ===
+// Sort the photo list by the selected field.
+// Dates are sorted newest-first, while title and author use A-Z ordering.
 function sortGalleryItems(items, sortBy) {
     const sortedItems = [...items];
 
@@ -229,6 +241,17 @@ function sortGalleryItems(items, sortBy) {
 }
 
 // === STEP 6 ===
+// Apply category filtering, search filtering, and sorting in sequence.
+// The final array is what we render on the page.
+function getFilteredGalleryItems() {
+    const categoryFiltered = filterGalleryByCategory(galleryItems, currentCategory);
+    const searchFiltered = filterGalleryBySearch(categoryFiltered, currentSearchTerm);
+    return sortGalleryItems(searchFiltered, currentSort);
+}
+
+// === STEP 7 ===
+// Render the current set of photo cards into the gallery grid.
+// This clears the previous cards before adding the new ones.
 function renderGallery(items) {
     const galleryGrid = document.querySelector(".gallery-grid");
     if (!galleryGrid) {
@@ -247,42 +270,110 @@ function renderGallery(items) {
     }
 }
 
-// === STEP 7 ===
+// === STEP 8 ===
+// Handle changes to the category select menu.
+// Update state and re-render the gallery.
 function handleCategoryFilter(event) {
     currentCategory = event.target.value;
     renderGallery(getFilteredGalleryItems());
 }
 
-// === STEP 8 ===
+// Update the search term as the user types in the search field.
+// This makes the gallery filter in real time.
 function handleSearchInput(event) {
     currentSearchTerm = event.target.value;
     renderGallery(getFilteredGalleryItems());
 }
 
+// When the search button is clicked, render the gallery using the current search term.
+function handleSearchButton() {
+    renderGallery(getFilteredGalleryItems());
+}
 
-// === STEP 10 ===
+// === STEP 9 ===
+// Handle changes to the sort menu.
+// Update sort state and refresh the visible cards.
 function handleSortChange(event) {
     currentSort = event.target.value;
     renderGallery(getFilteredGalleryItems());
 }
 
+// === STEP 10 ===
+// Open the detail modal for a clicked photo.
+// Fill the modal with the photo data and prevent page scrolling.
+function openModal(photo) {
+    const modal = document.querySelector(".modal");
+    if (!modal) {
+        return;
+    }
 
+    modal.querySelector(".modal-img").src = photo.url;
+    modal.querySelector(".modal-img").alt = photo.title;
+    modal.querySelector(".modal-title").textContent = photo.title;
+    modal.querySelector(".modal-description").textContent = photo.description;
+    modal.querySelector(".modal-author").textContent = `Author: ${photo.author}`;
+    modal.querySelector(".modal-date").textContent = `Date: ${photo.date}`;
 
-const categorySelect = document.querySelector("#category-filter");
-if (categorySelect) {
-    categorySelect.addEventListener("change", handleCategoryFilter);
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
 }
 
-const searchInput = document.querySelector(".search-input");
-if (searchInput) {
-    searchInput.addEventListener("input", handleSearchInput);
+// === STEP 11 ===
+// Close the modal and restore normal page scrolling.
+function closeModal() {
+    const modal = document.querySelector(".modal");
+    if (!modal) {
+        return;
+    }
+
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
 }
 
-const sortSelect = document.querySelector("#sort-select");
-if (sortSelect) {
-    sortSelect.addEventListener("change", handleSortChange);
+// Close the modal when the Escape key is pressed.
+function handleEscapeKey(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
 }
 
-renderGallery(getFilteredGalleryItems());
+// === STEP 12 ===
+// Attach event listeners and render the gallery when the page loads.
+function initGalleryApp() {
+    const categorySelect = document.querySelector("#category-filter");
+    const searchInputElement = document.querySelector(".search-input");
+    const searchButton = document.querySelector(".search-button");
+    const sortSelect = document.querySelector("#sort-select");
+    const modalClose = document.querySelector(".modal-close");
+    const modalOverlay = document.querySelector(".modal-overlay");
 
+    if (categorySelect) {
+        categorySelect.addEventListener("change", handleCategoryFilter);
+    }
 
+    if (searchInputElement) {
+        searchInputElement.addEventListener("input", handleSearchInput);
+    }
+
+    if (searchButton) {
+        searchButton.addEventListener("click", handleSearchButton);
+    }
+
+    if (sortSelect) {
+        sortSelect.addEventListener("change", handleSortChange);
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener("click", closeModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener("click", closeModal);
+    }
+
+    document.addEventListener("keydown", handleEscapeKey);
+
+    renderGallery(getFilteredGalleryItems());
+}
+
+document.addEventListener("DOMContentLoaded", initGalleryApp);
