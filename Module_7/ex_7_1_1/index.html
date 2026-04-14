@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 7.1 - Selecteurs avances</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+        }
+        .menu-principal li{
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+        .contenu p:first-of-type {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        table tr:nth-child(even){
+            background-color: #e8f4fd;
+        }
+        .menu-principal :last-child{
+            color: red;
+        }
+        .contenu p:not(.note){
+            font-size: 1.6em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul class="menu-principal">
+            <li>Accueil</li>
+            <li>Projets</li>
+            <li>A propos</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <div class="contenu">
+        <h2>Bienvenue</h2>
+        <p>Ceci est le paragraphe d'introduction qui suit le titre.</p>
+        <p>Un autre paragraphe normal.</p>
+        <p class="note">Note : ceci est une remarque speciale.</p>
+    </div>
+
+    <table>
+        <tr>
+            <th>Competence</th>
+            <th>Niveau</th>
+        </tr>
+        <tr>
+            <td>HTML</td>
+            <td>Acquis</td>
+        </tr>
+        <tr>
+            <td>CSS</td>
+            <td>Acquis</td>
+        </tr>
+        <tr>
+            <td>JavaScript</td>
+            <td>Acquis</td>
+        </tr>
+        <tr>
+            <td>DOM</td>
+            <td>Acquis</td>
+        </tr>
+    </table>
+</body>
+
+</html>

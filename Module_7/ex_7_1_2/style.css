@@ -1,0 +1,31 @@
+body{
+    background-color: rgb(70, 70, 70);
+    color: rgb(66, 61, 54);
+}
+.carte{
+    padding: 20px;
+    margin: 20px;
+    position: relative;
+}
+.galerie .carte:nth-child(odd){
+    background-color: #9ec8f3;
+}
+.galerie .carte:nth-child(even){
+    background-color: #f33e99;
+}
+.galerie .carte:first-child{
+    border-left: 10px solid #e5f321;
+}
+.galerie .carte:last-child{
+    border-left: 10px solid #4CAF50;
+}
+
+.galerie .carte::before{
+    position: absolute;
+    content: "Projet";
+    top: 15px;
+    color: lightslategray;
+}
+.carte a:not(.lien-demo){
+    color: rgb(107, 6, 138);
+}

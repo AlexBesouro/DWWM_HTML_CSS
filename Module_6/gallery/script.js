@@ -376,4 +376,4 @@ function initGalleryApp() {
     renderGallery(getFilteredGalleryItems());
 }
 
-document.addEventListener("DOMContentLoaded", initGalleryApp);
+initGalleryApp()

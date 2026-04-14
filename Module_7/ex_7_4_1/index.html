@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Exercice 2 - Sticky et Fixed</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="top">
+    <section class="section">
+        <h2 class="titre-section">Section 1 : Introduction</h2>
+        <p>Contenu de la section 1...</p>
+        <p>Ajoutez suffisamment de paragraphes pour pouvoir scroller.</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Encore du contenu pour la section 1...</p>
+        <p>Et encore plus de contenu...</p>
+    </section>
+
+    <section class="section">
+        <h2 class="titre-section">Section 2 : Developpement</h2>
+        <p>Contenu de la section 2...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Encore du contenu...</p>
+        <p>Et encore plus de contenu...</p>
+        <p>Continuez a ajouter du contenu...</p>
+    </section>
+
+    <section class="section">
+        <h2 class="titre-section">Section 3 : Conclusion</h2>
+        <p>Contenu de la section 3...</p>
+        <p>Lorem ipsum dolor sit amet...</p>
+        <p>Encore du contenu...</p>
+        <p>Et encore plus de contenu...</p>
+        <p>Fin de la page.</p>
+    </section>
+    <button class="btn-open" onclick="document.querySelector('.modal-overlay').style.display='flex'">Открыть модальное окно</button>
+    
+    <div class="modal-overlay">
+    
+        <div class="modal-card">
+    
+            <div class="modal-header">
+                <h3>Заголовок окна</h3>
+                <button class="btn-close" onclick="this.closest('.modal-overlay').style.display='none'">&times;</button>
+            </div>
+    
+            <div class="modal-body">
+                <p>Здесь может быть любой контент: текст, форма или изображение.</p>
+                <p>Здесь может быть любой контент: текст, форма или изображение.</p>
+            </div>
+    
+            <div class="modal-footer">
+                <button class="btn-cancel" onclick="this.closest('.modal-overlay').style.display='none'">Отмена</button>
+                <button class="btn-submit" onclick="this.closest('.modal-overlay').style.display='none'">Подтвердить</button>
+            </div>
+    
+        </div>
+    </div>
+    <a href="#top" class="bouton-haut" title="Retour en haut">↑</a>
+</body>
+
+</html>
