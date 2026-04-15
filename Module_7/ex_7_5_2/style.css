@@ -1,0 +1,43 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.btn-anime{
+    display: flex;
+    width: 400px;
+    height: 100px;
+    background-color: blue;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 30px;
+    transition: scale 1s ease-in-out, background-color 2s ease;
+}
+
+.btn-anime:hover{
+    scale: 1.3;
+    background-color: blueviolet;
+}
+
+.menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-100%);
+    background-color: chartreuse;
+    transition: transform 0.5s ease-in-out;
+    z-index: 100;
+}
+.menu.open{
+    transform: translateX(0);
+}
