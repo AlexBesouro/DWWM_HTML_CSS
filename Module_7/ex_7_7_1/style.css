@@ -1,0 +1,70 @@
+/* Контейнер для выравнивания карточек в ряд */
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Общий стиль для всех карточек */
+.card {
+    display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    width: 600px;
+    height: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    /* Цвет по умолчанию */
+    transition: all 0.3s ease;
+    /* Для плавных эффектов */
+    text-align: center;
+    overflow: hidden;
+}
+
+
+.card-1 {
+    color: azure;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #6da1f5,#300d81);
+}
+
+.card-2 {
+    background-color: aqua;
+    box-shadow:10px 5px 101px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-3 {
+    background-color: rgb(51, 51, 51);
+    color: #fff;
+    text-shadow:
+        0 0 5px rgb(218, 255, 5, 1),
+        0 0 10px rgb(218, 255, 5, 1),
+        0 0 20px rgb(218, 255, 5, 0.8),
+        0 0 40px rgb(218, 255, 5, 0.6);
+    }
+
+.card-4 {
+    background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80");
+    background-size: cover;
+    background-position: center;
+    color: aliceblue;
+}
+
+.card-5 {
+    background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=80");
+    background-size: 50%;
+    filter: grayscale();
+    background-repeat: no-repeat;
+    background-position: center 20%;
+    color: rgb(247, 255, 240);
+}
+
+.card-6 {
+
+}

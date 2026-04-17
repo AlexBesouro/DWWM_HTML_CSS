@@ -43,9 +43,9 @@ function loadTodos() {
     }
 }
 
-function saveTodos() {
-    localStorage.setItem("my_todo_list", JSON.stringify(todoItems));
-}
+    function saveTodos() {
+        localStorage.setItem("my_todo_list", JSON.stringify(todoItems));
+    }
 
 function renderToDoList(items) {
     taskList.innerHTML = "";

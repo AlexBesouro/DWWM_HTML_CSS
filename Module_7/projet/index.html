@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="style.css">
+        <script defer src="script.js"></script>
+    </head>
+    <body class="">
+        <header class="main-header">
+            <div class="search-container">
+                <label for="name-search" class="visually-hidden">Search by name</label>
+                <div class="search-wrapper">
+                    <input type="search" id="name-search" class="search-input" placeholder="Enter the name of card..."
+                        aria-label="Enter the name of card">
+                    <button class="search-submit" aria-label="Search">
+                        <span class="icon" aria-hidden="true">🔍</span>
+                    </button>
+                </div>
+            </div>
+        
+            <button class="btn-header" title="Ascending order">
+                <span class="btn-text">Asc order</span>
+                <span class="icon">📅</span>
+            </button>
+        </header>
+        <div class="background">
+            <main>
+                <!-- <button class="btn add-day" type="button">
+                    <span class="btn-icon">+</span>
+                    <span class="btn-text">Add done's for the day </span>
+                </button>
+                <button class="btn summary" type="button">
+                    <span class="btn-text">See statistics </span>
+                </button>
+                    <div class="modal"></div>
+                    <div class="container-day"> -->
+                        <!-- <button class="close-modal" type="button" aria-label="Close modal">X</button>
+                        <h3 class="card-name">Название</h3>
+                        <div class="card-body">
+                            <div class="card-info-row">
+                                <span class="label">Lead time:</span>
+                                <span class="task-time">4ч 30м</span>
+                            </div>
+                    
+                            <div class="card-info-row">
+                                <span class="label">Score:</span>
+                                <span class="task-rating">★★★★☆</span>
+                            </div>
+                    
+                            <div class="card-comments active">
+                                <span class="label">Description:</span>
+                                <p class="comment-text">
+                                    Сегодня был продуктивный день, закончил верстку хедера и настроил анимации появления карточек.
+                                </p>
+                            </div>
+                        </div>
+                        <span class="card-date">17.04.2026</span>
+                    </div> -->
+                <main>
+                    <button class="btn add-day" type="button">
+                        <span class="btn-icon">+</span>
+                        <span class="btn-text">Add done's for the day </span>
+                    </button>
+                    <button class="btn summary" type="button">
+                        <span class="btn-text">See statistics </span>
+                    </button>
+                
+                    <div class="tasks-grid"></div>
+                    <div class="modal"></div>
+                </main>
+            </main>
+        </div>
+        <footer>
+            <p>&copy; 2026 All rights reserved</p>
+        </footer>
+    </body>
+</html>

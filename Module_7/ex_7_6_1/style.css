@@ -81,14 +81,12 @@ section {
     border-radius: 10px;
     height: 120px;
     width: 200px;
-    user-select: none; /* Чтобы не выделялся текст при таскании */
-    touch-action: none; /* Важно для мобилок */
-    position: absolute; /* Чтобы фигура могла свободно летать */
+    user-select: none;
+    touch-action: none; 
+    position: absolute; 
     cursor: grab;
 }
-/* .transition-move:active{
-    cursor: grabbing;
-} */
+
 
 
 .circle {
@@ -174,15 +172,34 @@ section {
     }
 }
 
-.scroll-reveal {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 0.8s ease-out;
-    /* Плавность появления */
+.animations{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 50px;
+    align-items: center;
 }
 
-/* Этот класс мы добавим через JavaScript, когда доскроллим */
+.card.scroll-reveal {
+    height: 300px;
+}
+
+.scroll-reveal { 
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
 .scroll-reveal.active {
     opacity: 1;
     transform: translateY(0);
+}
+.scroll-2{
+    opacity: 0;
+    transform: translate(100px, 100px);
+    transition: all 1.0s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.scroll-2.visible {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+
 }

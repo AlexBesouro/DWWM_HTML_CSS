@@ -7,7 +7,7 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.1 // Сработает, когда 10% элемента появится на экране
+    threshold: 0.5 // Сработает, когда 10% элемента появится на экране
 });
 
 document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
@@ -48,3 +48,15 @@ document.addEventListener('mouseup', () => {
     box.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
     box.style.transform = 'translateX(0px)';
 });
+
+
+function callback(entries, observer){
+    entries.forEach((entry) => {
+        if (entry.isIntersecting){
+            entry.target.classList.add("visible")
+        }else entry.classList.remove("visible")
+    })
+}
+const opt = {threshold: 0.5}
+const observer2 = new IntersectionObserver(callback, opt)
+document.querySelectorAll(".scroll-2").forEach((el) => observer2.observe(el))
