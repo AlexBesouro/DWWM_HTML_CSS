@@ -26,38 +26,6 @@
             </button>
         </header>
         <div class="background">
-            <main>
-                <!-- <button class="btn add-day" type="button">
-                    <span class="btn-icon">+</span>
-                    <span class="btn-text">Add done's for the day </span>
-                </button>
-                <button class="btn summary" type="button">
-                    <span class="btn-text">See statistics </span>
-                </button>
-                    <div class="modal"></div>
-                    <div class="container-day"> -->
-                        <!-- <button class="close-modal" type="button" aria-label="Close modal">X</button>
-                        <h3 class="card-name">Название</h3>
-                        <div class="card-body">
-                            <div class="card-info-row">
-                                <span class="label">Lead time:</span>
-                                <span class="task-time">4ч 30м</span>
-                            </div>
-                    
-                            <div class="card-info-row">
-                                <span class="label">Score:</span>
-                                <span class="task-rating">★★★★☆</span>
-                            </div>
-                    
-                            <div class="card-comments active">
-                                <span class="label">Description:</span>
-                                <p class="comment-text">
-                                    Сегодня был продуктивный день, закончил верстку хедера и настроил анимации появления карточек.
-                                </p>
-                            </div>
-                        </div>
-                        <span class="card-date">17.04.2026</span>
-                    </div> -->
                 <main>
                     <button class="btn add-day" type="button">
                         <span class="btn-icon">+</span>
@@ -68,9 +36,36 @@
                     </button>
                 
                     <div class="tasks-grid"></div>
-                    <div class="modal"></div>
+                    <div class="modal">
+                        <div class="container-day active add-task-modal">
+                            <button class="close-modal" type="button" aria-label="Close modal">X</button>
+                            <h3 class="card-name">Add New Task</h3>
+                            <form class="add-task-form">
+                                <div class="form-group">
+                                    <label for="task-name">Task Name:</label>
+                                    <input type="text" id="task-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-lead-time">Lead Time:</label>
+                                    <input type="text" id="task-lead-time" name="leadTime" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-score">Score (1-5):</label>
+                                    <input type="number" id="task-score" name="score" min="1" max="5" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-description">Description:</label>
+                                    <textarea id="task-description" name="description" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn submit-btn">Add Task</button>
+                                <div class="form-group">
+                                    <label for="task-date">Date:</label>
+                                    <input type="date" id="task-date" name="date" max="2026-04-19" required>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </main>
-            </main>
         </div>
         <footer>
             <p>&copy; 2026 All rights reserved</p>
