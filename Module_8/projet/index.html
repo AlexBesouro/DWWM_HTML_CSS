@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="module" src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="main-container">
+        <h1>Movie Explorer</h1>
+        <section class="search-section" aria-labelledby="search-title">
+            <h2 id="search-title" class="visually-hidden">Find a movie</h2>
+        
+            <form role="search" class="search-form">
+                <label for="movie-search" class="search-label">Search Movies</label>
+        
+                <div class="search-wrapper">
+                    <input type="search" id="movie-search" name="q" placeholder="movie's name..." required
+                        aria-required="true" autocomplete="off">
+                    <button type="submit" aria-label="Start searching">
+                        <span aria-hidden="true">🔍</span>
+                    </button>
+                </div>
+            </form>
+            <div id="filtres">
+                <button data-genre="all">All</button>
+                <button data-genre="sf">Science-Fiction</button>
+                <button data-genre="comics">Comics</button>
+                <button data-genre="action">Action</button>
+            </div>
+        </section>
+        <!-- Boutons de filtre -->
+        
+        <div class="films-container"></div>
+    </main>
+</body>
+</html>
