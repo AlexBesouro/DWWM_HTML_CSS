@@ -103,6 +103,85 @@ h1{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Контейнер фильтра по оценке */
+.rating-filter-container {
+    max-width: 800px;
+    margin: 10px auto 30px auto;
+    /* Центрируем как search-section */
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.rating-filter-container label {
+    font-weight: bold;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.rating-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Стилизация ползунка (Range) */
+#movie-rating {
+    flex-grow: 1;
+    height: 6px;
+    cursor: pointer;
+    accent-color: #3498db;
+    /* Подстраиваем под твой основной синий цвет */
+}
+
+#rating-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #3498db;
+    min-width: 35px;
+    text-align: center;
+}
+
+/* Кнопка внутри блока рейтинга */
+.rating-input-wrapper button {
+    width: 44px;
+    height: 44px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
+}
+
+.rating-input-wrapper button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(52, 152, 219, 0.4);
+}
+
+.rating-input-wrapper button:active {
+    transform: translateY(0);
+}
+
+/* Иконка лупы */
+.rating-input-wrapper button span {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
 .films-container {
     display: grid;
     grid-template-columns: repeat(3, minmax(350px, 1fr));

@@ -1,4 +1,14 @@
 
+function showLoading(){
+    const filmsContainer = document.querySelector(".films-container");
+    filmsContainer.innerHTML = `
+        <div class="Loading">
+        Movies Loading
+        </div>
+    `;
+    console.log("[dom.js] Loading indicator showing");
+}
+
 function renderCardsFilm(filmsList, htmlSelector){
     htmlSelector.innerHTML = ""
     filmsList.forEach(film => {
@@ -29,8 +39,8 @@ function renderCardsFilm(filmsList, htmlSelector){
 }
 
 
-function filtredByGenre(filmList, filmGenre){
+function filtredByGenre(filmGenre, filmList){
     return filmList.filter(film => film.genre.toLowerCase().includes(filmGenre.toLowerCase()))
 }
 
-export { renderCardsFilm, filtredByGenre }
+export { renderCardsFilm, filtredByGenre, showLoading }

@@ -1,12 +1,20 @@
-import {renderCardsFilm} from "./dom.js"
-import {films} from "./films.js"
+import {renderCardsFilm, showLoading} from "./dom.js"
+import {loadFilms} from "./films.js"
 import {initialiserSearchEvenements} from "./events.js"
 
 const filmsContainer = document.querySelector(".films-container")
 const searchSection = document.querySelector(".search-section")
 
-renderCardsFilm(films, filmsContainer)
-initialiserSearchEvenements(searchSection, filmsContainer)
+showLoading()
+
+let movies = [] 
+loadFilms()
+    .then((value)=> {
+        movies = value;
+        renderCardsFilm(movies, filmsContainer)
+    })
+
+initialiserSearchEvenements(searchSection, filmsContainer, () => movies)
 
 //===================================================================
 const configParDefaut = {
