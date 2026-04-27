@@ -96,18 +96,16 @@ h1{
     color: white;
 }
 
-/* Стиль для активного фильтра (добавь этот класс через JS при клике) */
 #filtres button.active {
     background-color: #3498db;
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Контейнер фильтра по оценке */
+
 .rating-filter-container {
     max-width: 800px;
     margin: 10px auto 30px auto;
-    /* Центрируем как search-section */
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #eee;
@@ -133,13 +131,13 @@ h1{
     max-width: 500px;
 }
 
-/* Стилизация ползунка (Range) */
+
 #movie-rating {
     flex-grow: 1;
     height: 6px;
     cursor: pointer;
     accent-color: #3498db;
-    /* Подстраиваем под твой основной синий цвет */
+
 }
 
 #rating-value {
@@ -150,7 +148,7 @@ h1{
     text-align: center;
 }
 
-/* Кнопка внутри блока рейтинга */
+
 .rating-input-wrapper button {
     width: 44px;
     height: 44px;
@@ -176,7 +174,6 @@ h1{
     transform: translateY(0);
 }
 
-/* Иконка лупы */
 .rating-input-wrapper button span {
     font-size: 1.1rem;
     line-height: 1;
@@ -248,6 +245,11 @@ h1{
 .favorite::before {
     content: "♡";
     color: #999;
+}
+
+.favorite.active::before {
+    content: "♥";
+    color: #e74c3c;
 }
 
 

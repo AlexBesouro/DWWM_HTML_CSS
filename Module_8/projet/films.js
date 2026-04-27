@@ -1,38 +1,80 @@
-function loadFilms(){
-    console.log("[films.js] Movies loading...")
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log("[films.js] Done !");
-            const films = [
-            {id:1, title: "Inception", year: 2010, director: "Christopher Nolan", rating: 8.8, poster: "inception.jpg", genre: "SF" },
-            {id:2, title: "Interstellar", year: 2014, director: "Christopher Nolan", rating: 8.7, poster: "interstellar.jpg", genre: "SF" },
-            {id:3, title: "The Dark Knight", year: 2008, director: "Christopher Nolan", rating: 9.0, poster: "dark-knight.jpg", genre: "Comics" },
-            {id:4, title: "Pulp Fiction", year: 1994, director: "Quentin Tarantino", rating: 8.9, poster: "pulp-fiction.jpg", genre: "Action" },
-            {id:5, title: "Parasite", year: 2019, director: "Bong Joon-ho", rating: 8.5, poster: "Parasite.jpg", genre: "Action" }
-        ];        
-        resolve(films)
-    }, 2000);
-    })
+import {API_KEY, API_BASE} from "./config.js"
+
+
+function buildMovieUrl(options = { type: 'popular' }) {
+    const baseUrl = API_BASE;
+    const params = new URLSearchParams({
+        api_key: API_KEY,
+        language: 'en-EN',
+        page: 1
+    });
+
+    let endpoint = "/movie/popular";
+
+    if (options.type === 'search' && options.query) {
+        endpoint = "/search/movie";
+        params.append('query', options.query);
+    } 
+    else if (options.type === 'discover') {
+        endpoint = "/discover/movie";
+        params.append('sort_by', 'popularity.desc');
+        
+        if (options.genre) params.append('with_genres', options.genre);
+        if (options.rating) params.append('vote_average.gte', options.rating);
+    }
+
+    return `${baseUrl}${endpoint}?${params.toString()}`;
 }
 
-let favoriteMovies = []
-function ajouterAuxFavoris(favoris, film){
-    if (favoris.some(movie => movie.id === film.id)){
-        return;
+async function loadFilms(htmlSelector, url){
+    htmlSelector.innerHTML = `<p class="loading">Loading...</p>`
+    try{
+        const request = await fetch(url)
+        if (!request.ok){
+            throw new Error(`HTTP error: ${request.status}`)
+        }
+        let moviesList = await request.json()
+        moviesList = moviesList.results
+        console.log(moviesList)
+        return moviesList
+    }catch(error){
+        htmlSelector.innerHTML = `<p class="error">${error.message}</p>`;
+    }
+    
+}
+
+
+function loadFavotites(){
+    const request = localStorage.getItem("my_favorite_movies")
+    let myFavoriteMovies;
+    try{
+        myFavoriteMovies = (request && typeof request === 'string') 
+        ? JSON.parse(request) 
+        : [];
+    }catch (error){
+        console.error("Error parsing JSON:", error.message);
+        myFavoriteMovies = [];
+    }
+    return myFavoriteMovies
+    
+}
+
+function addToFavorites(favorites, film){
+    if (favorites.some(movie => movie.id === film.id)){
+        return favorites;
     }else {
-        favoriteMovies = [...favoris, film]
-        return favoriteMovies
+        return [...favorites, film]
     }
 }
 
-function retirerDesFavoris(favoris, idFilm){
+function deleteFromFavorites(favoris, idFilm){
     return favoris.filter(film => film.id !== idFilm)
 }
 
 
-function mettreAJourFilm(favoris, idFilm, modifications){
+function updateFavorites(favoris, idFilm, modifications){
     return favoris.map(film => film.id === idFilm ? {...film, ...modifications} : film)
 }
 
 
-export {loadFilms, favoriteMovies, ajouterAuxFavoris, retirerDesFavoris, mettreAJourFilm}
+export {loadFilms, buildMovieUrl, loadFavotites, addToFavorites, deleteFromFavorites,updateFavorites}
